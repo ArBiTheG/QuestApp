@@ -8,11 +8,4 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="DataAccess\" />
-    <Folder Include="Model\" />
-    <Folder Include="Repository\" />
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
-
 </Project>

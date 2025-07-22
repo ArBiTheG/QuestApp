@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuestApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace QuestApp.View
     /// </summary>
     public partial class MainView : UserControl
     {
+        MainViewModel ViewModel;
         public MainView()
         {
             InitializeComponent();
+            ViewModel = new MainViewModel();
+            DataContext = ViewModel;
         }
     }
 }
