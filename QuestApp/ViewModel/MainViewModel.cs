@@ -1,8 +1,10 @@
 ﻿using QuestApp.Model;
 using QuestApp.Services;
+using QuestApp.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +15,7 @@ namespace QuestApp.ViewModel
     {
         QuestService _questService;
 
-        public Test Test { get; set; }
-        public Question CurrentQuestion { get; set; }
+        RelayCommand _selectAnswerCommand;
 
         public MainViewModel()
         {
@@ -31,6 +32,19 @@ namespace QuestApp.ViewModel
             };
         }
 
+        public Test Test { get; set; }
+        public Question CurrentQuestion { get; set; }
 
+        public RelayCommand SelectAnswerCommand
+        {
+            get => _selectAnswerCommand ?? (_selectAnswerCommand = new RelayCommand((obj) =>
+            {
+                Guid guid;
+                if (Guid.TryParse(obj?.ToString(),out guid))
+                {
+                    //TODO: Выполнение действий при выборе ответа
+                }
+            }));
+        }
     }
 }

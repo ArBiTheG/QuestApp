@@ -19,10 +19,11 @@
             <Border Grid.Row="0">
                 <TextBlock Text="{Binding CurrentQuestion.Description}"/>
             </Border>
-            <ItemsControl Grid.Row="1" ItemsSource="{Binding CurrentQuestion.Answers}">
+            <ItemsControl x:Name="itemsControl" Grid.Row="1" ItemsSource="{Binding CurrentQuestion.Answers}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button>
+                        <Button Command="{Binding ElementName=itemsControl, Path=DataContext.SelectAnswerCommand}"
+                                CommandParameter="{Binding Guid}">
                             <StackPanel>
                                 <TextBlock Text="{Binding Description}"/>
                             </StackPanel>
