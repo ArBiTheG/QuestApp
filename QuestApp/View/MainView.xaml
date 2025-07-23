@@ -11,6 +11,25 @@
         <ViewModel:MainViewModel/>
     </d:UserControl.DataContext>
     <Grid>
-
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0">
+                <TextBlock Text="{Binding CurrentQuestion.Description}"/>
+            </Border>
+            <ItemsControl Grid.Row="1" ItemsSource="{Binding CurrentQuestion.Answers}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Description}"/>
+                            </StackPanel>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
     </Grid>
 </UserControl>
