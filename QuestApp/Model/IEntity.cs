@@ -8,6 +8,6 @@ namespace QuestApp.Model
 {
     public interface IEntity
     {
-        public Guid Guid { get; }
+        public Guid Guid { get; set;}
     }
 }

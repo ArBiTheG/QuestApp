@@ -12,6 +12,6 @@ namespace QuestApp.Model
         {
         }
 
-        public Guid Guid { get; }
+        public Guid Guid { get; set; }
     }
 }
