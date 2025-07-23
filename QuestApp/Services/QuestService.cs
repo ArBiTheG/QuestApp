@@ -22,8 +22,9 @@ namespace QuestApp.Services
         {
             var test = _dataProvider.LoadData()?.ToArray();
             if (test != null)
-                return test[0];
-            return new Test();
+                if (test.Length > 0)
+                    return test[0];
+            return new Test("Квест не загружен","Не удалось загрузить квест, поскольку был не найден");
         }
     }
 }

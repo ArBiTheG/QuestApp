@@ -18,11 +18,11 @@ namespace QuestApp.Model
         }
         private Question GetFirstQuestion()
         {
-            return _test.Questions.FirstOrDefault(new Question());
+            return _test.Questions.FirstOrDefault(new Question("Вопрос не найден","Не удалось загрузить первый вопрос, поскольку его не существует"));
         }
         private Question GetQuestionByGuid(Guid? guid)
         {
-            return _test.Questions.FirstOrDefault(q => q.Guid == guid, new Question());
+            return _test.Questions.FirstOrDefault(q => q.Guid == guid, new Question("Вопрос не найден", "Не удалось загрузить следующий вопрос, поскольку его не существует"));
         }
 
         public Question CurrentQuestion => _currentQuestion;

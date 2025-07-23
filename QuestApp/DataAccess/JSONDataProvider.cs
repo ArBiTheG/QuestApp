@@ -17,11 +17,18 @@ namespace QuestApp.DataAccess
         {
             this.jsonDataPath = jsonDataPath;
         }
-        public IEnumerable<T>? LoadData()
+        public IEnumerable<T> LoadData()
         {
             using (FileStream fs = new FileStream(jsonDataPath, FileMode.OpenOrCreate))
             {
-                return JsonSerializer.Deserialize<IEnumerable<T>>(fs);
+                try
+                {
+                    return JsonSerializer.Deserialize<IEnumerable<T>>(fs) ?? new List<T>();
+                }
+                catch (JsonException ex)
+                {
+                    return new List<T>();
+                }
             }
         }
         public void SaveData(IEnumerable<T> data)
