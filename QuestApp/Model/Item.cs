@@ -8,6 +8,10 @@ namespace QuestApp.Model
 {
     public class Item : IEntity
     {
+        public Item()
+        {
+        }
+
         public Guid Guid { get; }
     }
 }

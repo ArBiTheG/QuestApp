@@ -20,6 +20,10 @@ namespace QuestApp.Model
 
         }
 
+        public Test()
+        {
+        }
+
         public Guid Guid { get; }
         public string Name { get; set; }
         public string Description { get; set; }

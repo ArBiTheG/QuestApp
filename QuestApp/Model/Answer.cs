@@ -18,6 +18,10 @@ namespace QuestApp.Model
         {
         }
 
+        public Answer()
+        {
+        }
+
         public Guid Guid { get;}
         public string Name { get; set; }
         public string Description { get; set; }

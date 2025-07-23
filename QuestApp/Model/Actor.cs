@@ -8,6 +8,10 @@ namespace QuestApp.Model
 {
     public class Actor: IEntity
     {
+        public Actor()
+        {
+        }
+
         public Guid Guid { get; }
     }
 }
