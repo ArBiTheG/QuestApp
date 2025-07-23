@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuestApp.Services
 {
-    internal class MainService
+    internal class QuestService
     {
 
     }

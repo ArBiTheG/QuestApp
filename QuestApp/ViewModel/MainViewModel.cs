@@ -9,11 +9,11 @@ namespace QuestApp.ViewModel
 {
     internal class MainViewModel
     {
-        MainService _mainService;
+        QuestService _questService;
 
         public MainViewModel()
         {
-            _mainService = new MainService();
+            _questService = new QuestService();
         }
     }
 }

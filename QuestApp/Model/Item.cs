@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace QuestApp.Model
 {
-    internal class Item
+    public class Item : IEntity
     {
+        public Guid Guid { get; }
     }
 }

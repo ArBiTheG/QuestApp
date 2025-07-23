@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuestApp.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace QuestApp.DataAccess
 {
-    internal class JSONDataProvider<T> : IDataProvider<T>
+    internal class JSONDataProvider<T> : IDataProvider<T> where T : IEntity, new()
     {
         private string jsonDataPath;
 

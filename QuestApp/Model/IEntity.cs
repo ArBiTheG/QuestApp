@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuestApp.Model
 {
-    public class Actor: IEntity
+    public interface IEntity
     {
         public Guid Guid { get; }
     }

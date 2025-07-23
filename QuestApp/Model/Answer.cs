@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuestApp.Model
 {
-    public class Answer
+    public class Answer : IEntity
     {
         public Answer(Guid guid, string name, string description)
         {
@@ -18,7 +18,7 @@ namespace QuestApp.Model
         {
         }
 
-        public Guid Guid { get; set; }
+        public Guid Guid { get;}
         public string Name { get; set; }
         public string Description { get; set; }
 
