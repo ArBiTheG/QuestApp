@@ -19,12 +19,20 @@
             </Grid.RowDefinitions>
             <Border Grid.Row="0"
                     Background="#19000000">
-                <StackPanel Margin="4" Height="30" Orientation="Horizontal">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Счёт: "/>
-                        <TextBlock Text="{Binding CurrentActor.Score}"/>
+                <Grid Margin="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Margin="4" Grid.Column="0" Orientation="Horizontal">
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock Text="Счёт: "/>
+                            <TextBlock Text="{Binding CurrentActor.Score}"/>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
+                    <Button Margin="4" Padding="4" Grid.Column="1" Content="Начать сначала"
+                            Command="{Binding ResetQuestCommand}"/>
+                </Grid>
             </Border>
             <Border Grid.Row="1" Margin="8" MinHeight="100" VerticalAlignment="Center"
                     CornerRadius="4" Background="#19000000">

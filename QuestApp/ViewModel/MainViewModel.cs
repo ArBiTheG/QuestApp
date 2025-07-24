@@ -22,11 +22,16 @@ namespace QuestApp.ViewModel
 
         Question _currentQuestion;
         Actor _curentActor;
+        RelayCommand _resetQuestCommand;
         RelayCommand _selectAnswerCommand;
 
         public MainViewModel()
         {
             _questService = new QuestService();
+            StartNewQuest();
+        }
+        private void StartNewQuest()
+        {
             _questModel = new QuestModel(_questService.GetTest());
 
             CurrentQuestion = _questModel.CurrentQuestion;
@@ -50,6 +55,14 @@ namespace QuestApp.ViewModel
                 _curentActor = value;
                 OnPropertyChanged(nameof(CurrentActor));
             }
+        }
+
+        public RelayCommand ResetQuestCommand
+        {
+            get => _resetQuestCommand ?? (_resetQuestCommand = new RelayCommand((obj) =>
+            {
+                StartNewQuest();
+            }));
         }
 
         public RelayCommand SelectAnswerCommand
