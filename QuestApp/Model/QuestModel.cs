@@ -11,11 +11,13 @@ namespace QuestApp.Model
     {
         Test _test;
         Question _currentQuestion;
+        Actor _currentActor;
 
         public QuestModel(Test test)
         {
             _test = test;
             _currentQuestion = GetFirstQuestion();
+            _currentActor = new Actor("Игрок","Описание");
         }
         private Question GetFirstQuestion()
         {
@@ -27,12 +29,14 @@ namespace QuestApp.Model
         }
 
         public Question CurrentQuestion => _currentQuestion;
+        public Actor Actor => _currentActor;
 
         public void SelectAnswerForCurrentQuestion(Guid guid)
         {
             Answer? answer = _currentQuestion.Answers.FirstOrDefault(answer => answer.Guid == guid);
             if (answer != null)
             {
+                _currentActor.Score += answer.RewardScore;
                 if (answer.NavigateQuestion != null)
                 {
                     _currentQuestion = GetQuestionByGuid(answer.NavigateQuestion);

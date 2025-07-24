@@ -21,6 +21,7 @@ namespace QuestApp.ViewModel
 
 
         Question _currentQuestion;
+        Actor _curentActor;
         RelayCommand _selectAnswerCommand;
 
         public MainViewModel()
@@ -29,6 +30,7 @@ namespace QuestApp.ViewModel
             _questModel = new QuestModel(_questService.GetTest());
 
             CurrentQuestion = _questModel.CurrentQuestion;
+            CurrentActor = _questModel.Actor;
         }
 
         public Question CurrentQuestion 
@@ -38,6 +40,15 @@ namespace QuestApp.ViewModel
             {
                 _currentQuestion = value;
                 OnPropertyChanged(nameof(CurrentQuestion));
+            }
+        }
+        public Actor CurrentActor
+        {
+            get => _curentActor;
+            set
+            {
+                _curentActor = value;
+                OnPropertyChanged(nameof(CurrentActor));
             }
         }
 
@@ -50,6 +61,7 @@ namespace QuestApp.ViewModel
                 {
                     _questModel.SelectAnswerForCurrentQuestion(guid);
                     CurrentQuestion = _questModel.CurrentQuestion;
+                    CurrentActor = _questModel.Actor;
                 }
             }));
         }

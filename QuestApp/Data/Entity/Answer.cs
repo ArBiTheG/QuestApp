@@ -13,6 +13,7 @@ namespace QuestApp.Data.Entity
             Guid = guid;
             Name = name;
             Description = description;
+            RewardScore = 0;
         }
         public Answer(string name, string description) : this(Guid.NewGuid(), name, description)
         {
@@ -25,6 +26,7 @@ namespace QuestApp.Data.Entity
         public Guid Guid { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public double RewardScore { get; set; }
 
         public Guid? NavigateQuestion { get; set; }
     }

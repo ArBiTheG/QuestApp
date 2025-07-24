@@ -42,10 +42,12 @@ namespace QuestApp.Services
                             {
                                 new Answer("Answer1", "DescriptionAnswer1")
                                 {
+                                    RewardScore = 10,
                                     NavigateQuestion = Guid.Parse("24625bd9-6538-4084-ac89-11e91c86dc62")
                                 },
                                 new Answer("Answer2", "DescriptionAnswer2")
                                 {
+                                    RewardScore = 10,
                                     NavigateQuestion = Guid.Parse("09690b6a-94d6-4992-a366-4d61a87efbc6")
                                 },
                             }
@@ -56,6 +58,10 @@ namespace QuestApp.Services
                             Answers = new List<Answer>()
                             {
                                 new Answer("Answer3","DescriptionAnswer3")
+                                {
+                                    RewardScore = 10,
+                                    NavigateQuestion = Guid.Parse("f8f19551-dbc8-45f2-892d-c898de996876")
+                                },
                             }
                         },
 
@@ -64,6 +70,10 @@ namespace QuestApp.Services
                             Answers = new List<Answer>()
                             {
                                 new Answer("Answer4","DescriptionAnswer4")
+                                {
+                                    RewardScore = 10,
+                                    NavigateQuestion = Guid.Parse("f8f19551-dbc8-45f2-892d-c898de996876")
+                                },
                             }
                         }
                     }
