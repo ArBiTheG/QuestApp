@@ -4,28 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuestApp.Model
+namespace QuestApp.Data.Entity
 {
-    public class Answer : IEntity
+    public class Question : IEntity
     {
-        public Answer(Guid guid, string name, string description)
+        public Question(Guid guid, string name, string description)
         {
             Guid = guid;
             Name = name;
             Description = description;
-        }
-        public Answer(string name, string description) : this(Guid.NewGuid(), name, description)
-        {
+            Answers = new List<Answer>();
         }
 
-        public Answer()
+        public Question(string name, string description) : this(Guid.NewGuid(), name, description)
+        {
+
+        }
+
+        public Question()
         {
         }
 
         public Guid Guid { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-
-        public Guid? NavigateQuestion { get; set; }
+        public IEnumerable<Answer> Answers { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using QuestApp.Model;
+﻿using QuestApp.Data.Entity;
+using QuestApp.Model;
 using QuestApp.Services;
 using QuestApp.Utils;
 using System;

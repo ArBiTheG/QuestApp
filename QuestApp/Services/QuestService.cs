@@ -1,5 +1,5 @@
-﻿using QuestApp.DataAccess;
-using QuestApp.Model;
+﻿using QuestApp.Data.DataAccess;
+using QuestApp.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

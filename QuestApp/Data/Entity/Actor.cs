@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuestApp.Model
+namespace QuestApp.Data.Entity
 {
-    public class Item : IEntity
+    public class Actor : IEntity
     {
-        public Item()
+        public Actor()
         {
         }
 

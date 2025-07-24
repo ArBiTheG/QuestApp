@@ -1,11 +1,11 @@
-﻿using QuestApp.Model;
+﻿using QuestApp.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuestApp.DataAccess
+namespace QuestApp.Data.DataAccess
 {
     internal interface IDataProvider<T> where T : IEntity, new()
     {

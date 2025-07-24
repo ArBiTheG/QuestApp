@@ -1,4 +1,4 @@
-﻿using QuestApp.Model;
+﻿using QuestApp.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace QuestApp.DataAccess
+namespace QuestApp.Data.DataAccess
 {
     internal class JSONDataProvider<T> : IDataProvider<T> where T : IEntity, new()
     {
