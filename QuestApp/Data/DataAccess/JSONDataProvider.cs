@@ -35,7 +35,12 @@ namespace QuestApp.Data.DataAccess
         {
             using (FileStream fs = new FileStream(jsonDataPath, FileMode.OpenOrCreate))
             {
-                JsonSerializer.Serialize(fs, data);
+
+                JsonSerializerOptions options = new JsonSerializerOptions();
+                options.WriteIndented = true;
+
+
+                JsonSerializer.Serialize(fs, data, options);
                 Console.WriteLine("Data has been saved to file");
             }
         }
