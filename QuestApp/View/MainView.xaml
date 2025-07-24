@@ -11,26 +11,32 @@
         <ViewModel:MainViewModel/>
     </d:UserControl.DataContext>
     <Grid>
-        <Grid>
+        <Grid Margin="4">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Border Grid.Row="0">
-                <TextBlock Text="{Binding CurrentQuestion.Description}"/>
+            <Border Grid.Row="0" VerticalAlignment="Center" Margin="4" MinHeight="100"
+                    CornerRadius="4" Background="#19000000">
+                <TextBlock VerticalAlignment="Center"
+                           TextAlignment="Center" TextWrapping="Wrap"
+                           Text="{Binding CurrentQuestion.Description}"/>
             </Border>
-            <ItemsControl x:Name="itemsControl" Grid.Row="1" ItemsSource="{Binding CurrentQuestion.Answers}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Button Command="{Binding ElementName=itemsControl, Path=DataContext.SelectAnswerCommand}"
-                                CommandParameter="{Binding Guid}">
-                            <StackPanel>
-                                <TextBlock Text="{Binding Description}"/>
-                            </StackPanel>
-                        </Button>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            <Border Grid.Row="1" Margin="4" MinHeight="100"
+                    CornerRadius="4" Background="#19000000">
+                <ItemsControl VerticalAlignment="Center" x:Name="itemsControl" ItemsSource="{Binding CurrentQuestion.Answers}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Command="{Binding ElementName=itemsControl, Path=DataContext.SelectAnswerCommand}"
+                    CommandParameter="{Binding Guid}">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Description}"/>
+                                </StackPanel>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Border>
         </Grid>
     </Grid>
 </UserControl>
