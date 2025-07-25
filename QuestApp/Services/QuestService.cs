@@ -72,7 +72,12 @@ namespace QuestApp.Services
                                 new Answer("Answer4","DescriptionAnswer4")
                                 {
                                     RewardScore = 10,
-                                    NavigateQuestion = Guid.Parse("f8f19551-dbc8-45f2-892d-c898de996876")
+                                    NavigateQuestion = Guid.Parse("f8f19551-dbc8-45f2-892d-c898de996876"),
+                                    GameOver = new GameOver()
+                                    {
+                                        Name = "Поздравляю",
+                                        Description = "Вы закончили игру"
+                                    }
                                 },
                             }
                         }

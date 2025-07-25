@@ -15,6 +15,7 @@ namespace QuestApp.Data.Entity
             Description = description;
             RewardScore = 0;
         }
+
         public Answer(string name, string description) : this(Guid.NewGuid(), name, description)
         {
         }
@@ -29,5 +30,6 @@ namespace QuestApp.Data.Entity
         public double RewardScore { get; set; }
 
         public Guid? NavigateQuestion { get; set; }
+        public GameOver? GameOver { get; set; }
     }
 }

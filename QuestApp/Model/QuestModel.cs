@@ -13,6 +13,11 @@ namespace QuestApp.Model
         Question _currentQuestion;
         Actor _currentActor;
 
+        public delegate void ChangeQuestionHandler();
+        public delegate void GameOverHandler(GameOver gameOver);
+        public event ChangeQuestionHandler QuestionChanged;
+        public event GameOverHandler GameOvered;
+
         public QuestModel(Test test)
         {
             _test = test;
@@ -28,7 +33,14 @@ namespace QuestApp.Model
             return _test.Questions.FirstOrDefault(q => q.Guid == guid, new Question("Вопрос не найден", "Не удалось загрузить следующий вопрос, поскольку его не существует"));
         }
 
-        public Question CurrentQuestion => _currentQuestion;
+        public Question CurrentQuestion
+        {
+            get => _currentQuestion;
+            set {
+                _currentQuestion = value;
+                QuestionChanged?.Invoke();
+            }
+        }
         public Actor Actor => _currentActor;
 
         public void SelectAnswerForCurrentQuestion(Guid guid)
@@ -37,9 +49,15 @@ namespace QuestApp.Model
             if (answer != null)
             {
                 _currentActor.Score += answer.RewardScore;
+                if (answer.GameOver != null)
+                {
+                    GameOvered?.Invoke(answer.GameOver);
+                    return;
+                }
+
                 if (answer.NavigateQuestion != null)
                 {
-                    _currentQuestion = GetQuestionByGuid(answer.NavigateQuestion);
+                    CurrentQuestion = GetQuestionByGuid(answer.NavigateQuestion);
                 }
             }
         }

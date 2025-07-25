@@ -2,6 +2,7 @@
 using QuestApp.Model;
 using QuestApp.Services;
 using QuestApp.Utils;
+using QuestApp.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,6 +17,9 @@ namespace QuestApp.ViewModel
 {
     internal class MainViewModel: INotifyPropertyChanged
     {
+        IDialogWindowService dialogWindowService;
+        IGameOverDialogService gameOverDialogService;
+
         QuestService _questService;
         QuestModel _questModel;
 
@@ -27,12 +31,17 @@ namespace QuestApp.ViewModel
 
         public MainViewModel()
         {
+            dialogWindowService = new DialogWindowService();
+            gameOverDialogService = new GameOverDialogService();
+
             _questService = new QuestService();
             StartNewQuest();
         }
         private void StartNewQuest()
         {
             _questModel = new QuestModel(_questService.GetTest());
+            _questModel.QuestionChanged += QuestModel_QuestionChanged;
+            _questModel.GameOvered += QuestModel_GameOvered;
 
             CurrentQuestion = _questModel.CurrentQuestion;
             CurrentActor = _questModel.Actor;
@@ -61,7 +70,10 @@ namespace QuestApp.ViewModel
         {
             get => _resetQuestCommand ?? (_resetQuestCommand = new RelayCommand((obj) =>
             {
-                StartNewQuest();
+                if (dialogWindowService.ShowDialog("Подтверждение","Вы действительно хотите начать новую игру?") == true)
+                {
+                    StartNewQuest();
+                }
             }));
         }
 
@@ -73,10 +85,21 @@ namespace QuestApp.ViewModel
                 if (Guid.TryParse(obj?.ToString(),out guid))
                 {
                     _questModel.SelectAnswerForCurrentQuestion(guid);
-                    CurrentQuestion = _questModel.CurrentQuestion;
-                    CurrentActor = _questModel.Actor;
                 }
             }));
+        }
+        private void QuestModel_QuestionChanged()
+        {
+            CurrentQuestion = _questModel.CurrentQuestion;
+            CurrentActor = _questModel.Actor;
+        }
+
+        private void QuestModel_GameOvered(GameOver gameOver)
+        {
+            if (gameOverDialogService.ShowDialog(gameOver) == true)
+            {
+                StartNewQuest();
+            }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

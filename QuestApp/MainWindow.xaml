@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:QuestApp"
         xmlns:View="clr-namespace:QuestApp.View" x:Class="QuestApp.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" MinHeight="400" MinWidth="500" WindowStartupLocation="CenterScreen">
     <Grid>
         <View:MainView/>
     </Grid>
